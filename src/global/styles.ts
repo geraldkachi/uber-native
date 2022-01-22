@@ -32,9 +32,6 @@ export const colors = {
     white: "#ffffff",
     darkBlue:"#2d328a",
     pagebackground:"white"
-
-    
-
 }
 
 
