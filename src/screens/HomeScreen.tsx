@@ -12,10 +12,10 @@ import {
   Pressable,
 } from "react-native";
 import Icon from "../components/Icons"   
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 
-const SCREEN_WIDTH = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 import { colors, parameters } from "../global/styles";
 import { filterData, carsAround } from "../global/data";
 import { mapStyle } from "../global/mapStyle";
@@ -157,7 +157,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </RectButton>
 
-        <RectButton onPress={()=> true}  style={{ ...styles.view5, borderBottomWidth: 0 }}>
+        <RectButton onPress={()=> true}  style={[styles.view5, { borderBottomWidth: 0} ]}>
           <View style={styles.view6}>
             <View style={styles.view7}>
               <Icon
@@ -177,12 +177,7 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </View>
           <View>
-            <Icon
-              type="materialCommunity"
-              name="chevron-right"
-              color={colors.grey}
-              size={26}
-            />
+            <Icon type="materialCommunity" name="chevron-right" color={colors.grey} size={26} />
           </View>
         </RectButton>
 
@@ -203,9 +198,9 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             {carsAround.map((item, index) => (
-              <MapView coordinate={item} key={index.toString()}>
+              <Marker coordinate={item} key={index.toString()}>
                 <Image source={require("../../assets/carMarker.png")} style={styles.carsAround} resizeMode="cover" />
-              </MapView>
+              </Marker>
             ))}
           </MapView>
         </View>
@@ -277,7 +272,7 @@ const styles = StyleSheet.create({
   },
   card: {
     alignItems: "center",
-    margin: SCREEN_WIDTH / 22,
+    margin: width / 22,
   },
 
   view2: { marginBottom: 5, borderRadius: 15, backgroundColor: colors.grey6 },
@@ -337,7 +332,8 @@ const styles = StyleSheet.create({
   map: {
     height: 150,
     marginVertical: 0,
-    width: SCREEN_WIDTH * 0.92,
+    width: width * 0.92,
+    borderRadius: 20 
   },
 
   text4: {

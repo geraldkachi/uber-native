@@ -1,8 +1,12 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, LogBox } from "react-native";
 import HomeScreen from "./src/screens/HomeScreen";
 import Icon from "./src/components/Icons";
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);
 
 export default function App() {
   return (
