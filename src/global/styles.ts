@@ -1,4 +1,5 @@
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+// import { getStatusBarHeight } from 'react-native-status-bar-height';
+import Constants from "expo-constants"
 
 // 44 - on iPhoneX
 // 20 - on iOS device
@@ -36,7 +37,8 @@ export const colors = {
 
 
 export const parameters ={
-    statusBarHeight :getStatusBarHeight(),
+    statusBarHeight: Constants.statusbarheight,
+    // statusBarHeight :getStatusBarHeight(),
     headerHeight:70,
 
     styledButton:{
