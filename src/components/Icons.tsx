@@ -13,6 +13,7 @@ import SimpleLineIcon from '@expo/vector-icons/SimpleLineIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 import IconProps from '@expo/vector-icons/build/createIconSet';
 
 const getIconFont = (type: string) => {
@@ -48,7 +49,7 @@ const getIconFont = (type: string) => {
     case 'octicon':
       return OcticonIcon;
     case "fontawesome":
-      return FontAwesome
+      return FontAwesome;
     default:
       return FAIcon;
   }
@@ -57,7 +58,7 @@ interface IconPropsTypes {
     IconProps
 }
 
- const Icon = ({type, ...props}: IconPropsTypes) => {
+ const Icon = ({type, ...props}: any) => {
   const FontICon = getIconFont(type);
 
   return <FontICon {...props} />;

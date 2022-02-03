@@ -9,6 +9,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import Icon from "../components/Icons"   
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
@@ -18,6 +19,7 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 import { colors, parameters } from "../global/styles";
 import { filterData, carsAround } from "../global/data";
 import { mapStyle } from "../global/mapStyle";
+import { RectButton } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
   const [latlng, setLatLng] = useState({});
@@ -47,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
     } catch (err) {}
   };
 
-  const _map = useRef(1);
+  const _map = useRef<any>(1);
 
   useEffect(() => {
     checkPermission();
@@ -69,25 +71,26 @@ const HomeScreen = ({ navigation }) => {
           <View style={styles.view1}>
             <View style={styles.view8}>
               <Text style={styles.text2}>Read a book.Take a nap. Stare out the window</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("RequestScreen", { state: 0 })}>
+              
+              {/* <TouchableOpacity onPress={() => navigation.navigate("RequestScreen", { state: 0 })}> */}
+              <TouchableOpacity onPress={() => true}>
                 <View style={styles.button1}>
                   <Text style={styles.button1Text}>Ride with Uber</Text>
                 </View>
               </TouchableOpacity>
+              
             </View>
+            
             <View>
-              <Image
-                style={styles.image1}
-                source={require("../../assets/uberCar.png")}
-              />
+              <Image style={styles.image1} source={require("../../assets/uberCar.png")} />
             </View>
           </View>
         </View>
 
         <View>
           <FlatList
-            numRows={4}
-            horizontal={true}
+            // numColumns={4}
+            horizontal
             showsHorizontalScrollIndicator={false}
             data={filterData}
             keyExtractor={(item) => item.id.toString()}
@@ -104,8 +107,11 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.view3}>
-          <Text style={styles.text3}> Where to ?</Text>
-          <View style={styles.view4}>
+          <RectButton onPress={()=> true} style={{flex:1}}>
+            <Text style={styles.text3}> Where to ?</Text>
+          </RectButton>
+          
+          <RectButton onPress={()=> true} style={styles.view4}>
             <Icon
               type="materialCommunity"
               name="clock-time-four"
@@ -119,38 +125,10 @@ const HomeScreen = ({ navigation }) => {
               color={colors.grey1}
               size={26}
             />
-          </View>
-        </View>
-        <View style={styles.view5}>
-          <View style={styles.view6}>
-            <View style={styles.view7}>
-              <Icon
-                type="materialCommunity"
-                name="map-marker"
-                color={colors.black}
-                size={22}
-              />
-            </View>
-            <View>
-              <Text style={{ fontSize: 18, color: colors.black }}>
-                32 Olivia Rd
-              </Text>
-              <Text style={{ color: colors.grey3 }}>
-                Klipfontein 83-Ir, Boksburg
-              </Text>
-            </View>
-          </View>
-          <View>
-            <Icon
-              type="materialCommunity"
-              name="chevron-right"
-              color={colors.grey}
-              size={26}
-            />
-          </View>
+          </RectButton>
         </View>
 
-        <View style={{ ...styles.view5, borderBottomWidth: 0 }}>
+        <RectButton onPress={()=> true} style={styles.view5}>
           <View style={styles.view6}>
             <View style={styles.view7}>
               <Icon
@@ -177,7 +155,36 @@ const HomeScreen = ({ navigation }) => {
               size={26}
             />
           </View>
-        </View>
+        </RectButton>
+
+        <RectButton onPress={()=> true}  style={{ ...styles.view5, borderBottomWidth: 0 }}>
+          <View style={styles.view6}>
+            <View style={styles.view7}>
+              <Icon
+                type="materialCommunity"
+                name="map-marker"
+                color={colors.black}
+                size={22}
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 18, color: colors.black }}>
+                32 Olivia Rd
+              </Text>
+              <Text style={{ color: colors.grey3 }}>
+                Klipfontein 83-Ir, Boksburg
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Icon
+              type="materialCommunity"
+              name="chevron-right"
+              color={colors.grey}
+              size={26}
+            />
+          </View>
+        </RectButton>
 
         <Text style={styles.text4}> Around you</Text>
 
@@ -196,13 +203,9 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             {carsAround.map((item, index) => (
-              <MapView.Marker coordinate={item} key={index.toString()}>
-                <Image
-                  source={require("../../assets/carMarker.png")}
-                  style={styles.carsAround}
-                  resizeMode="cover"
-                />
-              </MapView.Marker>
+              <MapView coordinate={item} key={index.toString()}>
+                <Image source={require("../../assets/carMarker.png")} style={styles.carsAround} resizeMode="cover" />
+              </MapView>
             ))}
           </MapView>
         </View>
@@ -310,7 +313,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 25,
     justifyContent: "space-between",
-    marginHorizontal: 15,
+    paddingHorizontal: 15,
     borderBottomColor: colors.grey4,
     borderBottomWidth: 1,
     flex: 1,
