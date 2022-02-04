@@ -28,7 +28,7 @@ const DestinationScreen = ({ navigation }) => {
                 <TouchableOpacity>
                     <View style ={{top:25,alignItems:"center"}}>
                         <View style ={styles.view3}>
-                            {/* <Image  width={30} height={30} source = {require('../../assets/blankProfilePic.jpg')} /> */}
+                            <Image  width={30} height={30} source = {require('../../assets/blankProfilePic.jpg')} />
                             <Text style ={{marginLeft:5}}>For Someone</Text>
                             <Icon type ="materialCommunity" name ="chevron-down" color ={colors.grey1} size ={26} />
                         </View>

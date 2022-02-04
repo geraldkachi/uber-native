@@ -106,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.view3}>
-          <RectButton onPress={()=> true} style={{flex:1}}>
+          <RectButton onPress={()=> navigation.navigate("RequestScreen" , { state: 0 })} style={{flex:1}}>
             <Text style={styles.text3}> Where to ?</Text>
           </RectButton>
           

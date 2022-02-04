@@ -13,6 +13,8 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  Pressable,
+  ImageBackground,
 } from "react-native";
 import BottomSheet, {
   BottomSheetFlatList,
@@ -23,6 +25,7 @@ import MapComponent from "../components/MapComponent";
 import { colors, parameters } from "../global/styles";
 import { rideData } from "../global/data";
 import { OriginContext, DestinationContext } from "../contexts/contexts";
+import { TextInput } from "react-native-gesture-handler";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -43,7 +46,7 @@ export default function RequestScreen({ navigation, route }) {
 
   const bottomsheet1 = useRef<any>(1);
 
-  const snapPoints1 = useMemo(() => ["70%"], []);
+  const snapPoints1 = useMemo(() => ["20%"], []);
   const handleSheetChange1 = useCallback((index) => {}, []);
 
   useEffect(() => {
@@ -75,13 +78,13 @@ export default function RequestScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.view1}>
-        <Icon type="materialCommunity" name="arrow-left" color={colors.grey1} size={32}/>
-      </View>
+      <Pressable style={styles.view1} onPress={() => navigation.goBack()} >
+        <Icon type="materialCommunity" name="arrow-left" color={colors.grey1} size={32} />
+      </Pressable>
       <View style={styles.view2}>
         <TouchableOpacity>
           <View style={styles.view3}>
-            {/* <Image width={30} height={30} source={require("../../assets/blankProfilePic.jpg")} /> */}
+            <ImageBackground width={30} height={30} style={{borderRadius: 5,zIndex:999}} source={require("../../assets/blankProfilePic.jpg")} />
             <Text style={{ marginLeft: 5 }}>For Someone</Text>
             <Icon type="materialCommunity" name="chevron-down" color={colors.grey1} size={26} />
           </View>
@@ -99,7 +102,8 @@ export default function RequestScreen({ navigation, route }) {
             <View style={styles.view7}>
               <TouchableOpacity>
                 <View style={styles.view5}>
-                  <Text style={styles.text10}>...</Text>
+                  {/* <Text style={styles.text10}>...</Text> */}
+                  <TextInput placeholder="..." />
                 </View>
               </TouchableOpacity>
               <View style={styles.view8}>
