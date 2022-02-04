@@ -3,16 +3,16 @@ import { StyleSheet, Text, View,Dimensions,TouchableOpacity, Image,} from 'react
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Icon from '../components/Icons';
 import { colors,parameters } from '../global/styles'
-import {GOOGLE_MAPS_APIKEY} from "@env";
+// import { GOOGLE_MAPS_APIKEY } from "@env";
 import { OriginContext,DestinationContext } from '../contexts/contexts';
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const SCREEN_WIDTH = Dimensions.get('window').width;
+const { height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-const DestinationScreen = ({navigation}) => {
+const DestinationScreen = ({ navigation }) => {
 
-    const {dispatchOrigin} = useContext(OriginContext)
-    const {dispatchDestination} = useContext(DestinationContext)
+    const { dispatchOrigin } = useContext(OriginContext)
+    const { dispatchDestination } = useContext(DestinationContext)
 
     const textInput1 = useRef<any>(4);
     const textInput2 = useRef<any>(5);
@@ -23,18 +23,12 @@ const DestinationScreen = ({navigation}) => {
         <>
             <View style = {styles.view2}>
                 <View style ={styles.view1}> 
-                    <Icon 
-                        type ="materialCommunity"
-                        name ="arrow-left"
-                        color ={colors.grey1}
-                        size ={32}
-                        onPress ={()=>navigation.goBack()} 
-                    />
+                    <Icon type ="materialCommunity" name ="arrow-left" color ={colors.grey1} size ={32} onPress ={()=>navigation.goBack()} />
                 </View>
                 <TouchableOpacity>
                     <View style ={{top:25,alignItems:"center"}}>
                         <View style ={styles.view3}>
-                            <Image  width={30} height={30} source = {require('../../assets/blankProfilePic.jpg')} />
+                            {/* <Image  width={30} height={30} source = {require('../../assets/blankProfilePic.jpg')} /> */}
                             <Text style ={{marginLeft:5}}>For Someone</Text>
                             <Icon type ="materialCommunity" name ="chevron-down" color ={colors.grey1} size ={26} />
                         </View>
@@ -55,7 +49,8 @@ const DestinationScreen = ({navigation}) => {
                 // autoFocus
                 styles={autoComplete}
                 query={{
-                    key:GOOGLE_MAPS_APIKEY,
+                    // key:"",
+                    key:"",
                     language:"en"
                 }}
                 onPress= {(data,details = null)=>{
@@ -85,11 +80,11 @@ const DestinationScreen = ({navigation}) => {
                 // autoFocus
                 styles = {autoComplete}
                 query ={{
-                    key:GOOGLE_MAPS_APIKEY,
+                    key:"",
                     language:"en"
                 }}
 
-                onPress= {(data,details = null)=>{
+                onPress= {(data,details = null) => {
                     dispatchDestination({type:"ADD_DESTINATION",payload:{
                         latitude:details.geometry.location.lat,
                         longitude:details.geometry.location.lng,

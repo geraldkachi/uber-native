@@ -4,9 +4,9 @@ import { mapStyle} from "../global/mapStyle"
 import MapView, { Marker, PROVIDER_GOOGLE,} from 'react-native-maps'; 
 import { colors,parameters } from '../global/styles';
 import MapViewDirections from 'react-native-maps-directions';
-import {GOOGLE_MAPS_APIKEY} from "@env";
+// import {""} from "@env";
 
-const MapComponent = ({ userDestination, userOrigin }) => { 
+const MapComponent = ({ userDestination, userOrigin }: any) => { 
 
     const _map = React.createRef<any>()
 
@@ -64,7 +64,7 @@ const MapComponent = ({ userDestination, userOrigin }) => {
                         <MapViewDirections 
                           origin={userOrigin}
                           destination={userDestination}
-                          apikey={GOOGLE_MAPS_APIKEY}
+                          apikey={""}
                           strokeWidth={4}
                           strokeColor={colors.black}
                         />

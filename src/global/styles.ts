@@ -37,7 +37,7 @@ export const colors = {
 
 
 export const parameters ={
-    statusBarHeight: Constants.statusbarheight,
+    statusBarHeight: Constants.statusBarHeight,
     // statusBarHeight :getStatusBarHeight(),
     headerHeight:70,
 

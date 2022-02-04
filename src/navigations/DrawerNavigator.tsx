@@ -15,8 +15,8 @@ export default function DrawerNavigator() {
         options={{
           title: "Client",
           headerShown: false,
-          drawerIcon: ({ focussed, size }) => 
-                <Icon type="materialCommunity" name="home" color={focussed ? "#7cc" : colors.grey2} size={size}/>          ,
+          drawerIcon: ({ focused, size }) => 
+                <Icon type="materialCommunity" name="home" color={focused ? "#7cc" : colors.grey2} size={size}/>,
         }}
       />
     </Drawer.Navigator>

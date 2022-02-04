@@ -61,9 +61,9 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon1}>
+        <Pressable style={styles.icon1} onPress={() => navigation.toggleDrawer()}>
           <Icon type="materialCommunity" name="menu" color={colors.white} size={40} />
-        </View>
+        </Pressable>
       </View>
       <ScrollView bounces={false}>
         <View style={styles.home}>
@@ -72,8 +72,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.view8}>
               <Text style={styles.text2}>Read a book.Take a nap. Stare out the window</Text>
               
-              {/* <TouchableOpacity onPress={() => navigation.navigate("RequestScreen", { state: 0 })}> */}
-              <TouchableOpacity onPress={() => true}>
+              <TouchableOpacity onPress={() => navigation.navigate("RequestScreen", { state: 0 })}>      
                 <View style={styles.button1}>
                   <Text style={styles.button1Text}>Ride with Uber</Text>
                 </View>
